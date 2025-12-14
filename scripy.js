@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu Mobile
+    // Menu Mobile - Funcionalidade
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         
-        // Alternar ícone (opcional)
+        // Alternar ícone entre Barras e X
         const icon = hamburger.querySelector('i');
         if (navLinks.classList.contains('active')) {
             icon.classList.remove('fa-bars');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Fechar menu ao clicar em um link
+    // Fechar menu automaticamente ao clicar em um link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Efeito de scroll suave para links internos (compatibilidade extra)
+    // Scroll suave para os links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
