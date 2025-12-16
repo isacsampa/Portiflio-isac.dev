@@ -163,91 +163,79 @@ footer { padding: 6rem 0 3rem; background: var(--mono-1); text-align: center; bo
 .footer-content p { color: var(--mono-4); margin-bottom: 2.5rem; }
 .footer-bottom { margin-top: 4rem; border-top: 1px solid rgba(57, 96, 67, 0.2); padding-top: 2rem; font-size: 0.8rem; color: var(--mono-3); }
 
+
 /* ::::::::::::::::::::::::::::::::::::::::::::::
-   RESPONSIVIDADE (MOBILE & TABLET)
+   RESPONSIVIDADE (MOBILE) - Atualizado
    :::::::::::::::::::::::::::::::::::::::::::::: */
 @media (max-width: 900px) {
-    /* Ajuste da Navbar para Mobile */
+    /* 1. Ajuste da Navbar */
+    .navbar {
+        padding: 1rem 0; /* Navbar um pouco mais fina no mobile */
+    }
+
+    /* 2. O Menu (Escondido por padrão) */
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
+        display: none; /* Escondido */
+        position: fixed; /* Fixa na tela */
+        top: 60px; /* Altura da navbar */
         left: 0;
         width: 100%;
-        background: var(--mono-1);
+        height: 100vh; /* Ocupa a altura toda */
+        background-color: var(--mono-1); /* Fundo Preto Sólido */
         flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        border-bottom: 1px solid var(--mono-3);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        align-items: center;
+        justify-content: center; /* Centraliza os links no meio da tela */
+        gap: 2rem;
+        z-index: 998; /* Fica acima de tudo */
+        border-top: 1px solid var(--mono-3);
     }
     
+    /* 3. Classe que o JS vai adicionar para MOSTRAR o menu */
     .nav-links.active {
         display: flex;
+        animation: slideIn 0.3s ease-in-out;
     }
 
+    /* Animação suave de entrada */
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Botão Hambúrguer */
     .hamburger {
         display: block;
+        z-index: 999;
     }
 
-    /* Hero Section Mobile */
+    /* Ícone do hambúrguer maior para facilitar o toque */
+    .hamburger i {
+        font-size: 1.8rem;
+    }
+
+    /* Ajustes do Hero (Foto e Texto) */
     .hero {
-        padding-top: 120px; /* Mais espaço pro topo */
-        padding-bottom: 50px;
+        padding-top: 100px;
         text-align: center;
-        height: auto;
     }
 
     .hero-container {
-        flex-direction: column-reverse; /* Inverte texto e foto */
-        gap: 3rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
     }
 
-    .hero h1 {
-        font-size: 2.8rem; /* Fonte menor no celular */
-    }
+    .hero h1 { font-size: 2.5rem; }
     
-    .hero p {
-        margin: 0 auto 2rem; /* Centraliza parágrafo */
-    }
-
-    .hero-btns, .social-links {
-        justify-content: center;
-    }
-    
-    /* Imagem menor no celular */
     .hero-img img {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .hero-img::before {
         width: 250px;
         height: 250px;
-        right: 15px;
     }
 
-    /* Projetos e Footer */
-    .projects {
-        padding: 4rem 0; /* Padding reduzido */
-    }
-
-    .section-title {
-        text-align: center;
-        border-left: none;
-        padding-left: 0;
-        font-size: 1.8rem;
-        margin-bottom: 3rem;
-    }
-    
+    /* Botões do rodapé empilhados */
     .footer-btns-wrapper {
         flex-direction: column;
-        align-items: center;
         width: 100%;
+        padding: 0 20px;
     }
-    
-    .footer-btns-wrapper .btn {
-        width: 100%;
-        max-width: 320px;
-    }
+
 }
